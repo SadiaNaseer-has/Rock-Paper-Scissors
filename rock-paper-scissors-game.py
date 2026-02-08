@@ -29,7 +29,7 @@ with col3:
     st.write(f"Score: *{st.session_state.score['computer']}*")
 
             
-user_choice = st.selectbox("# Game logic
+user_choice = st.selectbox("# Game logic")
 user_choice = st.selectbox("Choose your move:", ["rock 🎸", "paper 📄", "scissors ✂️"])
 
 if st.button("Play", type="primary"):
@@ -59,5 +59,6 @@ if st.button("# Reset
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()
+
 
 

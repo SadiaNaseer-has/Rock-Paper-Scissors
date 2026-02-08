@@ -37,7 +37,7 @@ if st.button("Play", type="primary"):
     
                       
     if user_choice == comp_choice:
-        result = "# Determine winner
+        result = "# Determine winner"
     if user_choice == comp_choice:
         result = "Tie!"
     elif (user_choice == "rock 🎸" and comp_choice == "scissors ✂️") or \
@@ -59,6 +59,7 @@ if st.button("# Reset
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()
+
 
 
 

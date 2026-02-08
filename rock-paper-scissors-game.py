@@ -1,63 +1,34 @@
 import streamlit as st
 import random
 
-# Page config
-st.set_page_config(page_title="Rock-Paper-Scissors", page_icon="🎮", layout="centered")
-
-# Header
-st.title("🎮 Rock-Paper-Scissors")
-st.markdown(" a simple game of chance")                                          
+# Initialize session state for score
 if 'score' not in st.session_state:
     st.session_state.score = {'user': 0, 'computer': 0}
 
-col1, col2, col3 = st.columns([2, 1, 2])
-with col1:
-    st.subheader("### A simple game of chance")
-
-# Score tracker
-if 'score' not in st.session_state:
-    st.session_state.score = {'user': 0, 'computer': 0}
-
-col1, col2, col3 = st.columns([2, 1, 2])
-with col1:
-    st.subheader("You")
-    st.write(f"Score: *{st.session_state.score['user']}*")
-with col2:
-    st.write("")
-with col3:
-    st.subheader("Computer")
-    st.write(f"Score: *{st.session_state.score['computer']}*")
-
-            
-user_choice = st.selectbox("# Game logic")
-user_choice = st.selectbox("Choose your move:", ["rock 🎸", "paper 📄", "scissors ✂️"])
+choices = ["rock 🎸", "paper 📄", "scissors ✂️"]
+user_choice = st.selectbox("Choose your move:", choices)
 
 if st.button("Play", type="primary"):
-    comp_choice = random.choice(["rock 🎸", "paper 📄", "scissors ✂️"])
+    comp_choice = random.choice(choices)
     
-                      
-    if user_choice == comp_choice:
-        result = "# Determine winner"
-    if user_choice == comp_choice:
-        result = "Tie!"
-    elif (user_choice == "rock 🎸" and comp_choice == "scissors ✂️") or \
-         (user_choice == "paper 📄" and comp_choice == "rock 🎸") or \
-         (user_choice == "scissors ✂️" and comp_choice == "paper 📄"):
-        st.session_state.score['user'] += 1
+    # Determine winner
+    user_move = choices.index(user_choice)
+    comp_move = choices.index(comp_choice)
+    
+    if user_move == comp_move:
+        result = "It's a tie!"
+    elif (user_move - comp_move) % 3 == 1:
         result = "You win!"
+        st.session_state.score['user'] += 1
     else:
-        st.session_state.score['computer'] += 1
         result = "Computer wins!"
+        st.session_state.score['computer'] += 1
+    
+    st.write(f"*Your choice:* {user_choice}")
+    st.write(f"*Computer's choice:* {comp_choice}")
+    st.write(result)
+    st.write(f"*Score - You:* {st.session_state.score['user']} | *Computer:* {st.session_state.score['computer']}")
 
-                 
-    st.write(f"# Show result")
-    st.write(f"Computer chose: *{comp_choice}*")
-    st.subheader(result)
-
-       
-if st.button("# Reset"):
-    st.session_state.score = {'user': 0, 'computer': 0}
-    st.experimental_rerun()
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()

@@ -50,15 +50,16 @@ if st.button("Play", type="primary"):
         result = "Computer wins!"
 
                  
-    st.write(f"# Show result
+    st.write(f"# Show result")
     st.write(f"Computer chose: *{comp_choice}*")
     st.subheader(result)
 
        
-if st.button("# Reset
+if st.button("# Reset"")
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()
+
 
 
 

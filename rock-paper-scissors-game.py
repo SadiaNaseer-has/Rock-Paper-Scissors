@@ -6,9 +6,7 @@ st.set_page_config(page_title="Rock-Paper-Scissors", page_icon="🎮", layout="c
 
 # Header
 st.title("🎮 Rock-Paper-Scissors")
-st.markdown("                             
-
-               
+st.markdown("                                           
 if 'score' not in st.session_state:
     st.session_state.score = {'user': 0, 'computer': 0}
 
@@ -61,3 +59,4 @@ if st.button("# Reset
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()
+

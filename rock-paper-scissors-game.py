@@ -56,9 +56,12 @@ if st.button("Play", type="primary"):
 
        
 if st.button("# Reset"):
+    st.session_state.score = {'user': 0, 'computer': 0}
+    st.experimental_rerun()
 if st.button("Reset Score"):
     st.session_state.score = {'user': 0, 'computer': 0}
     st.experimental_rerun()
+
 
 
 
